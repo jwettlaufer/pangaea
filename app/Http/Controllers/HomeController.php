@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\User;
+use App\Comment;
+use App\Profile;
+use Auth;
+
 
 class HomeController extends Controller
 {
@@ -25,4 +31,27 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function users()
+    {
+        $users = User::get();
+        return view('users', compact('users'));
+    }
+
+    public function user($id)
+    {
+        $user = User::find($id);
+        return view('usersView', compact('user'));
+    }
+
+    public function follwUserRequest(Request $request){
+
+
+        $user = User::find($request->user_id);
+        $response = auth()->user()->toggleFollow($user);
+
+
+        return response()->json(['success'=>$response]);
+    }
+
 }

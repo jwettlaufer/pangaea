@@ -20,3 +20,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('users', 'HomeController@users')->name('users');
+Route::get('user/{id}', 'HomeController@user')->name('user.view');
+
+
+Route::resource('posts', 'PostController');
+
+Route::resource('profile', 'ProfileController');
+
+Route::resource('comment', 'CommentController');
+
+Route::post('/comment/store', 'CommentController@store')->name('comment.add');
+
+Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
