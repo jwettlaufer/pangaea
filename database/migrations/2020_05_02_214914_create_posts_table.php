@@ -15,8 +15,9 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
           $table->bigIncrements('id');
-          $table->bigInteger('user_id');
+          $table->unsignedBigInteger('user_id');
           $table->string('message');
+          $table->unsignedBigInteger('like')->default(0);
           $table->boolean('is_gif')->default(false);
           $table->timestamps();
         });

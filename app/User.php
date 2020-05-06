@@ -45,10 +45,15 @@ class User extends Authenticatable
   public function comments() {
 
   return $this->hasMany('App\Comment');
-}
+  }
 
   public function profiles() {
 
   return $this->hasOne('App\Profile');
-}
+  }
+
+  public function likes(){
+
+    return $this->belongsToMany(Post::class, 'likes', 'user_id', 'post_id')->withTimeStamps();
+  }
 }

@@ -32,7 +32,11 @@ Index
       @endif
       </p>
     </div>
+      <div id="app">
       <ul>
+        <li>
+          <like :post={{ $post->id }}></like>
+        </li>
         <li>
             <a href="{{route('posts.show', $post->id)}}" class="btn btn-primary">
               Read More
@@ -53,6 +57,7 @@ Index
         </li>
         @endauth
       </ul>
+</div>
     </div>
   </li>
   @endforeach

@@ -21,10 +21,10 @@ class PostController extends Controller
     {
         //
         $posts = Post::query()
-                    ->join( 'users', 'posts.user_id', '=', 'users.id' )
-                    ->paginate(5);
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->paginate(5);
 
-        Return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -36,10 +36,10 @@ class PostController extends Controller
     {
         //
         $user = Auth::user();
-            if ($user)
-              return view('posts.create');
-            else
-              return redirect('/posts');
+        if ($user)
+            return view('posts.create');
+        else
+            return redirect('/posts');
     }
 
     /**
@@ -51,15 +51,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        if ( $user = Auth::user() ) {
+        if ($user = Auth::user()) {
             $validatedData = $request->validate(array(
                 'message' => 'required|max:240'
             ));
             $post = new Post;
             $post->user_id = $user->id;
             $post->message = $validatedData['message'];
-            if ( isset ($request->is_gif) && $request->is_gif === 'true') {
-              $post->is_gif = true;
+            if (isset($request->is_gif) && $request->is_gif === 'true') {
+                $post->is_gif = true;
             }
             $post->save();
 
@@ -80,7 +80,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         $postUser = User::findOrFail($post->user_id);
-        return view( 'posts.show', compact('post', 'postUser') );
+        return view('posts.show', compact('post', 'postUser'));
     }
 
     /**
@@ -111,15 +111,15 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
-        if ( $user = Auth::user() ) {
+        if ($user = Auth::user()) {
             $validatedData = $request->validate(array(
                 'message' => 'required|max:240'
             ));
-            
+
             $post = Post::findOrFail($id);
 
-            if ( isset ($request->is_gif) && $request->is_gif === 'true') {
-              $post->is_gif = true;
+            if (isset($request->is_gif) && $request->is_gif === 'true') {
+                $post->is_gif = true;
             } else $post->is_gif = false;
 
             Post::whereId($id)->update($validatedData);
@@ -140,12 +140,31 @@ class PostController extends Controller
     {
         //
         if ($user = Auth::user()) {
-        $post = Post::findOrFail($id);
+            $post = Post::findOrFail($id);
 
-        $post->delete();
+            $post->delete();
 
-        return redirect('/posts')->with('success', 'post has been deleted.');
-      }
+            return redirect('/posts')->with('success', 'post has been deleted.');
+        }
         return redirect('/posts');
-  }
+    }
+
+    public function getlike(Request $request)
+    {
+        $post = Post::find($request->post);
+        return response()->json([
+            'post'=>$post,
+        ]);
+    }
+    
+    public function like(Request $request)
+    {
+        $post = Post::find($request->post);
+        $value = $post->like;
+        $post->like = $value+1;
+        $post->save();
+        return response()->json([
+            'message'=>'Thanks',
+        ]);
+    }
 }

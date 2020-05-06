@@ -34,3 +34,6 @@ Route::resource('comment', 'CommentController');
 Route::post('/comment/store', 'CommentController@store')->name('comment.add');
 
 Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+
+Route::post('/like', 'PostController@getlike');
+Route::post('/like/{id}', 'PostController@like');
