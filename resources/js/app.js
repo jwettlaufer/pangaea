@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+window.axios = require('../../node_modules/scrollmagic').default;
 
 window.axios = require('../../node_modules/axios').default;
 window.Vue = require('vue');
