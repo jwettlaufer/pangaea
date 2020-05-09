@@ -15,35 +15,35 @@ TravelFeed
   @foreach($posts as $post)
   <li>
     <div class="card">
-    <div class="card-header">
-    <h2>
-      <img src="/pangaea/public/img/logo.png" style="height: 50px; width: 50px; border-radius: 50%;" class="img-responsive">
-      <a href="{{route('profile.show', $post->user->id)}}">
-        {{$post->name}}
-      </a>
-    </h2>
-    </div>
-    <div class="card-body">
-      <p class="card-text">
-      @if($post->is_gif == TRUE)
-      <img src="{{$post->message}}">
-      @else
-        {{$post->message}}
-      @endif
-      </p>
-    </div>
-      <div id="app">
+      <div class="card-header">
+        <h2>
+          <img src="/pangaea/public/img/logo.png" style="height: 50px; width: 50px; border-radius: 50%;" class="img-responsive">
+          <a href="{{route('profile.show', $post->user->id)}}">
+            {{$post->name}}
+          </a>
+        </h2>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          @if($post->is_gif == TRUE)
+          <img src="{{$post->message}}">
+          @else
+          {{$post->message}}
+          @endif
+        </p>
+      </div>
       <ul>
         <li>
-          <like :post={{ $post->id }}></like>
+          <a href="{{route('posts.show', $post->id)}}" class="btn btn-primary">
+            Read More
+          </a>
         </li>
         <li>
-            <a href="{{route('posts.show', $post->id)}}" class="btn btn-primary">
-              Read More
-            </a>
-        </li>
+          <div id="app" class="float-right">
+            <like post-id="{{ $post->id }}"></like>
+          </div>
+        <li>
       </ul>
-</div>
     </div>
   </li>
   @endforeach

@@ -26,6 +26,7 @@ Vue.component('post-edit-form', require('./components/PostEditForm.vue').default
 Vue.component('comment-create-form', require('./components/CommentCreateForm.vue').default);
 Vue.component('reply-create-form', require('./components/ReplyCreateForm.vue').default);
 Vue.component('comment-edit-form', require('./components/CommentEditForm.vue').default);
+Vue.component('like', require('./components/Like.vue').default);
 
 
 /**

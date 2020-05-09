@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::patch( '/post/{id}', 'PostController@toggleLike' );
+
+Route::post('/post/{id}/like', 'API\LikeController@like');
+
+Route::post('/post/{id}/like', 'API\LikeController@unlike');
+

@@ -7,6 +7,7 @@ use App\Post;
 use App\User;
 use App\Comment;
 use App\Profile;
+use App\Like;
 use Auth;
 use PhpParser\Node\Expr\PostDec;
 
@@ -156,22 +157,29 @@ class PostController extends Controller
         return redirect('/posts');
     }
 
-    public function getlike(Request $request)
+    /**
+     * Favorite a particular post
+     *
+     * @param  Post $post
+     * @return Response
+     */
+    public function likePost(Post $post)
     {
-        $post = Post::find($request->post);
-        return response()->json([
-            'post' => $post,
-        ]);
+        Auth::user()->likes()->attach($post->id);
+
+        return back();
     }
 
-    public function like(Request $request)
+    /**
+     * Unfavorite a particular post
+     *
+     * @param  Post $post
+     * @return Response
+     */
+    public function unlikePost(Post $post)
     {
-        $post = Post::find($request->post);
-        $value = $post->like;
-        $post->like = $value + 1;
-        $post->save();
-        return response()->json([
-            'message' => 'Thanks',
-        ]);
+        Auth::user()->likes()->detach($post->id);
+
+        return back();
     }
 }

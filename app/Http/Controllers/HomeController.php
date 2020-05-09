@@ -7,6 +7,7 @@ use App\Post;
 use App\User;
 use App\Comment;
 use App\Profile;
+use App\Like;
 use Auth;
 
 

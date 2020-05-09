@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <nav class="container">
+    <nav>
         <a href="#">
             <img src="../public/img/logo.png" class="logo">
         </a>
@@ -45,11 +45,10 @@
         </div>
         @endif
     </nav>
-
-    <div class="content">
-        <div class="title">
-            <h1>Welcome to Pangaea!</h1>
-        </div>
+    <header>
+        <h1>Welcome to Pangaea!</h1>
+    </header>
+    <main>
         <section class="panel what-is">
             <h2>What is Pangaea?</h2>
             <p>Pangaea is a social network tailored to all things travel. A place to discuss where you have been, where you are now, and where you want to go next. Travelling back to when we were all one big nation, joined by land. Now we are all joining through Pangaea!</p>
@@ -72,18 +71,15 @@
                 <div class="box4 digit">
                     <img class="travel-img" src="../public/img/paris.jpg">
                 </div>
-                <div class="box5 digit">
-                    <img class="travel-img" src="../public/img/sydney.jpg">
-                </div>
             </div>
         </section>
         <section class="panel register-now">
             <a href="{{ route('register') }}">Register Now!</a> and find your next adventure.
         </section>
-        <footer id="footer">
-            <p>&copy; Copyright 2020 Pangaea. All Rights Reserved.</p>
-        </footer>
-    </div>
+    </main>
+    <footer>
+        <p>&copy; Copyright 2020 Pangaea. All Rights Reserved.</p>
+    </footer>
 </body>
 
 </html>

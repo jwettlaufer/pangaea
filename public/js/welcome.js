@@ -2,16 +2,6 @@ $(document).ready(function() { // wait for document ready
     // init
     const controller = new ScrollMagic.Controller();
 
-    /*
-    const introScene = new ScrollMagic.Scene({
-        triggerElement: '.title',
-        triggerHook: 0,
-        duration: '30%'
-    })
-    .setPin('.title', {pushFollowers: false})
-    .addTo(controller);
-    */
-
     // get all slides
     const slides = document.querySelectorAll("section.panel");
 
@@ -19,12 +9,13 @@ $(document).ready(function() { // wait for document ready
     for (let i=0; i<slides.length; i++) {
         new ScrollMagic.Scene({
                 triggerElement: slides[i],
-                duration: '50%',
-                triggerHook: 0.1
+                offset: 50,												 // start a little later
+				triggerHook: 1,
+                reverse:false
             })
-            .setPin(slides[i], {pushFollowers: false})
-            .addIndicators() // add indicators (requires plugin)
-            .addTo(controller);
+            .setClassToggle(".panel", "visible") // add class toggle
+					//	.addIndicators() // add indicators (requires plugin)
+						.addTo(controller);
     }
 
     const revealElements = document.getElementsByClassName("digit");
@@ -35,7 +26,7 @@ $(document).ready(function() { // wait for document ready
 								triggerHook: 0.9,
 							})
 							.setClassToggle(revealElements[i], "visible") // add class toggle
-							.addIndicators({name: "digit " + (i+1) }) // add indicators (requires plugin)
+						//	.addIndicators({name: "digit " + (i+1) }) // add indicators (requires plugin)
 							.addTo(controller);
 		}
 });
