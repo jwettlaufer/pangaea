@@ -17,7 +17,7 @@ TravelFeed
     <div class="card">
     <div class="card-header">
     <h2>
-      <img src="" style="height: 50px; width: 50px; border-radius: 50%;" class="img-responsive">
+      <img src="/pangaea/public/img/logo.png" style="height: 50px; width: 50px; border-radius: 50%;" class="img-responsive">
       <a href="{{route('profile.show', $post->user->id)}}">
         {{$post->name}}
       </a>

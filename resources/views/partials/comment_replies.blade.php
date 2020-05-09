@@ -1,10 +1,29 @@
 @foreach($comments as $comment)
-   <div class="display-comment">
-       <strong><a href="{{route('profile.show', $comment->user->id)}}">{{ $comment->user->name }}</a></strong>
-       <p>{{ $comment->body }}</p>
-       <a href="" id="reply"></a>
-       <div id="app">
-<!--
+<div class="display-comment">
+    <strong><a href="{{route('profile.show', $comment->user->id)}}">{{ $comment->user->name }}</a></strong>
+    <section>
+        @if($comment->is_gif == TRUE )
+        <div>
+            <img src="{{ $comment->body }}">
+        </div>
+        @else
+        <p>
+            {{ $comment->body }}
+        </p>
+        @endif
+    </section>
+    <a href="#" id="reply"></a>
+    <div id="app">
+        <reply-create-form comment-url="{{route('reply.add')}}" comment-id="$comment->$id" post-id="{{ $post->id }}" v-model="body">
+            @csrf
+        </reply-create-form>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseGiphy">
+            Giphy
+        </button>
+        <div class="collapse" id="collapseGiphy">
+            <Giphy v-on:image-clicked="imageClicked" />
+        </div>
+        <!--
        <form method="post" action="{{ route('reply.add') }}">
            @csrf
            <div class="form-group">
@@ -18,25 +37,23 @@
            </div>
        </form> 
 -->
-            <comment-create-form v-model="comment" comment-url="{{ route('reply.add') }}"></comment-create-form>
-            <Giphy v-on:image-clicked="imageClicked" />
-       </div>
-       <ul>
-         @auth
-         <li>
-             <a href="{{route('comment.edit', $comment->id)}}" class="btn btn-primary">
-               Edit Comment
-             </a>
-         </li>
-         <li>
-             <form action="{{route('comment.destroy', $comment->id)}}" method="post">
-               @csrf
-                 @method('DELETE')
-                 <input type="submit" class="btn btn-danger" value="Delete Comment">
-             </form>
-         </li>
-         @endauth
-       </ul>
-       @include('partials.comment_replies', ['comments' => $comment->replies])
-   </div>
+    </div>
+    <ul>
+        @auth
+        <li>
+            <a href="{{route('comment.edit', $comment->id)}}" class="btn btn-primary">
+                Edit Comment
+            </a>
+        </li>
+        <li>
+            <form action="{{route('comment.destroy', $comment->id)}}" method="post">
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger" value="Delete Comment">
+            </form>
+        </li>
+        @endauth
+    </ul>
+    @include('partials.comment_replies', ['comments' => $comment->replies])
+</div>
 @endforeach

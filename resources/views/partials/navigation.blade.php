@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="../public/img/logo.png" style="height: 50px; width: 50px;" class="img-responsive">
+                <img src="/pangaea/public/img/logo.png" style="height: 50px; width: 50px;" class="img-responsive">
             </a>
             <a class="navbar-brand" href="{{ url('/posts') }}">
                 {{ config('app.name', 'Laravel') }}

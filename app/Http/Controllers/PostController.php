@@ -22,7 +22,14 @@ class PostController extends Controller
         //
         $posts = Post::query()
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->paginate(5);
+            ->select(
+                'posts.id',
+                'users.id as user_id',
+                'users.name',
+                'posts.message'
+            )
+            ->orderBy('posts.id', 'desc')
+            ->SimplePaginate(6);
 
         return view('posts.index', compact('posts'));
     }
@@ -153,18 +160,18 @@ class PostController extends Controller
     {
         $post = Post::find($request->post);
         return response()->json([
-            'post'=>$post,
+            'post' => $post,
         ]);
     }
-    
+
     public function like(Request $request)
     {
         $post = Post::find($request->post);
         $value = $post->like;
-        $post->like = $value+1;
+        $post->like = $value + 1;
         $post->save();
         return response()->json([
-            'message'=>'Thanks',
+            'message' => 'Thanks',
         ]);
     }
 }

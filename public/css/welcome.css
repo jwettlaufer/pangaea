@@ -36,7 +36,8 @@ html, body {
     text-transform: uppercase;
 }
 
-.m-b-md {
+.title {
+    background-color: lightgray;
     font-size: 6vh;
     margin-bottom: 30px;
 }
@@ -44,7 +45,7 @@ html, body {
 /* Custom */
 
 .logo {
-    padding: 10px;
+    padding: 8px;
     height: 60px; 
     width: 60px; 
 }
@@ -52,17 +53,19 @@ html, body {
 .panel {
     height: 100%;
     width: 100%;
+    padding: 50px;
 }
 .panel.reveal-images {
-    background-color: green;
+    background-color: lightgray;
+    padding-bottom: 400px;
 }
 
 .why-join {
-    background-color: red;
+    background-color:lightblue;
 }
 
-.register {
-    background-color: turquoise;
+.register-now {
+    background-color: lightblue;
 }
 
 nav {
@@ -86,6 +89,7 @@ nav {
              -o-transition: all 0.6s ease-out;
                     transition: all 0.6s ease-out;
 }
+
 .digit.visible {
     opacity: 1;
     -webkit-transform: none;
@@ -106,7 +110,9 @@ nav {
 .digit:nth-child(5) {
     margin-top: 50px;
 }
-
+.travel-img {
+    max-width: 200px;
+}
 @media screen and (max-width: 600px) {
     body  {
       width: 100%;
@@ -116,4 +122,12 @@ nav {
     h1 {
         font-size: 6vh;
     }
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .5);
 }

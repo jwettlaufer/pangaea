@@ -1,17 +1,16 @@
 <template>
   <section class="container">
-    <h1>Search for a Gif</h1>
     <div class="columns">
       <form @submit="giphySearch" class="column is-one-fifth" action="#" method="GET">
         <div class="field">
-          <label class="label" for="giphy-search">Search</label>
+          <label class="label" for="giphy-search">Search for Giphy</label>
           <div class="control">
             <input v-model="searchTerm" class="input" type="text" name="giphy-search" placeholder="Text input" />
           </div>
         </div>
         <div class="field is-grouped">
           <div class="control">
-            <button type="submit" class="button is-link">Submit</button>
+            <button type="submit" class="btn btn-primary">Search</button>
           </div>
         </div>
       </form>

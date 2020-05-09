@@ -2,6 +2,7 @@ $(document).ready(function() { // wait for document ready
     // init
     const controller = new ScrollMagic.Controller();
 
+    /*
     const introScene = new ScrollMagic.Scene({
         triggerElement: '.title',
         triggerHook: 0,
@@ -9,6 +10,7 @@ $(document).ready(function() { // wait for document ready
     })
     .setPin('.title', {pushFollowers: false})
     .addTo(controller);
+    */
 
     // get all slides
     const slides = document.querySelectorAll("section.panel");
@@ -17,8 +19,8 @@ $(document).ready(function() { // wait for document ready
     for (let i=0; i<slides.length; i++) {
         new ScrollMagic.Scene({
                 triggerElement: slides[i],
-                duration: '100%',
-                triggerHook: 'onLeave'
+                duration: '50%',
+                triggerHook: 0.1
             })
             .setPin(slides[i], {pushFollowers: false})
             .addIndicators() // add indicators (requires plugin)

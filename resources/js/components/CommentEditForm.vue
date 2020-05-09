@@ -1,36 +1,36 @@
 <template>
-  <form :action="editUrl" method="POST">
+  <form method="POST" :action="editUrl">
     <slot></slot>
     <div v-if="isGif" class="form-group">
       <div>
-        <img :src="message" />
-        <button class="btn btn-warning" @click="resetMessage">Reset</button>
-        <input type="hidden" name="message" v-model="message" />
+        <img :src="body" />
+        <button type="button" class="btn btn-warning" @click="resetMessage">Reset</button>
+        <input type="hidden" name="post_id" :value="postId" />
+        <input type="hidden" name="comment_body" v-model="body" />
         <input type="hidden" name="is_gif" :value="isGif" />
       </div>
     </div>
     <div v-else class="form-group">
-      <label for="message">
-        <strong>Edit Post:</strong>
-        <textarea class="form-control" name="message" id="message" rows="5" cols="30" v-model="message"
-        ></textarea>
+      <label for="body">
+        <input type="text" name="comment_body" class="form-control" v-model="body" />
+        <input type="hidden" name="post_id" :value="postId" />
       </label>
     </div>
     <div class="form-group">
-      <input type="submit" class="btn btn-warning" value="Update Post" />
+      <input type="submit" class="btn btn-warning" value="Update Comment" />
     </div>
   </form>
 </template>
 
 <script>
 export default {
-  name: "post-edit-form",
-  props: ["editUrl", "originalMessage", "postId", "commentId"],
+  name: "comment-edit-form",
+  props: ["editUrl", "originalMessage"],
   mounted () {
-    this.message = this.originalMessage;
+    this.body = this.originalMessage;
   },
   computed: {
-    message: {
+    body: {
       get() {
         this.isStringAGIFUrl(this.$attrs.value);
         return this.$attrs.value;
@@ -50,7 +50,7 @@ export default {
       return false;
     },
     resetMessage() {
-      this.message = "";
+      this.body = "";
     }
   },
   data() {
@@ -60,6 +60,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

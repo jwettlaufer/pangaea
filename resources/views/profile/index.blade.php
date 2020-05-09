@@ -13,7 +13,7 @@ Profile
 @include('partials.errors')
 <div class="card">
   <div class="card-header">
-    <img src="" style="height: 50px; width: 50px; border-radius: 50%;" class="img-responsive">
+    <img src="/pangaea/public/img/logo.png" style="height: 50px; width: 50px; border-radius: 50%;" class="img-responsive">
     <h2>{{$user->name}}</h2>
   </div>
   <div class="card-body">

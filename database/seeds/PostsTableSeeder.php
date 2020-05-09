@@ -19,7 +19,7 @@ class PostsTableSeeder extends Seeder
       foreach(range(1, 20) as $index){
       DB::table('posts')->insert(array(
         'user_id'=>$faker->numberBetween($min = 1, $max = 20),
-        'message'=>$faker->catchphrase
+        'message'=>$faker->paragraph
       ));
       }
     }

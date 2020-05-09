@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
-        'body'  =>  $faker->realText($faker->numberBetween(30, 240)),
-    ];
+        'user_id'=> $faker->numberBetween($min = 1, $max = 20),
+        'message'  =>  $faker->paragraph,
 });

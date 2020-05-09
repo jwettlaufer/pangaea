@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Social Networking Site for Travellers">
+    <meta name="keywords" content="network site, social media, travel, countries, advice, connect">
     <link rel='icon' href='favicon.ico' type='image/x-icon'>
     <title>Pangaea</title>
 
@@ -45,7 +47,7 @@
     </nav>
 
     <div class="content">
-        <div class="title m-b-md">
+        <div class="title">
             <h1>Welcome to Pangaea!</h1>
         </div>
         <section class="panel what-is">
@@ -58,27 +60,27 @@
         </section>
         <section class="panel reveal-images">
             <div id="reveal-elements">
-                <div class="box1 digit blue">
-                <img src="../public/img/hawaii.jpg">
+                <div class="box1 digit">
+                    <img class="travel-img" src="../public/img/hawaii.jpg">
                 </div>
-                <div class="box1 digit turqoise">
-                <img src="../public/img/japan.jpg">
+                <div class="box2 digit">
+                    <img class="travel-img" src="../public/img/japan.jpg">
                 </div>
-                <div class="box1 digit red">
-                <img src="../public/img/london.jpg">
+                <div class="box3 digit">
+                    <img class="travel-img" src="../public/img/london.jpg">
                 </div>
-                <div class="box1 digit green">
-                <img src="../public/img/paris.jpg">
+                <div class="box4 digit">
+                    <img class="travel-img" src="../public/img/paris.jpg">
                 </div>
-                <div class="box1 digit orange">
-                <img src="../public/img/sydney.jpg">
+                <div class="box5 digit">
+                    <img class="travel-img" src="../public/img/sydney.jpg">
                 </div>
             </div>
         </section>
         <section class="panel register-now">
             <a href="{{ route('register') }}">Register Now!</a> and find your next adventure.
         </section>
-        <footer>
+        <footer id="footer">
             <p>&copy; Copyright 2020 Pangaea. All Rights Reserved.</p>
         </footer>
     </div>

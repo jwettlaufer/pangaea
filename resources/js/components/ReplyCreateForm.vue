@@ -1,36 +1,35 @@
 <template>
-  <form :action="editUrl" method="POST">
+  <form method="POST" :action="replyUrl">
     <slot></slot>
     <div v-if="isGif" class="form-group">
       <div>
-        <img :src="message" />
-        <button class="btn btn-warning" @click="resetMessage">Reset</button>
-        <input type="hidden" name="message" v-model="message" />
+        <img :src="body" />
+        <button type="button" class="btn btn-warning" @click="resetMessage">Reset</button>
+        <input type="hidden" name="post_id" :value="postId" />
+        <input type="hidden" name="comment_id" :value="commentId" />
+        <input type="hidden" name="comment_body" v-model="body" />
         <input type="hidden" name="is_gif" :value="isGif" />
       </div>
     </div>
     <div v-else class="form-group">
-      <label for="message">
-        <strong>Edit Post:</strong>
-        <textarea class="form-control" name="message" id="message" rows="5" cols="30" v-model="message"
-        ></textarea>
+      <label for="body">
+        <input type="text" name="comment_body" class="form-control" v-model="body" />
+        <input type="hidden" name="post_id" :value="postId" />
+        <input type="hidden" name="comment_id" :value="commentId" />
       </label>
     </div>
     <div class="form-group">
-      <input type="submit" class="btn btn-warning" value="Update Post" />
+      <input type="submit" class="btn btn-warning" value="Add Reply" />
     </div>
   </form>
 </template>
 
 <script>
 export default {
-  name: "post-edit-form",
-  props: ["editUrl", "originalMessage", "postId", "commentId"],
-  mounted () {
-    this.message = this.originalMessage;
-  },
+  name: "reply-create-form",
+  props: ["replyUrl", "postId", "commentId"],
   computed: {
-    message: {
+    body: {
       get() {
         this.isStringAGIFUrl(this.$attrs.value);
         return this.$attrs.value;
@@ -50,7 +49,7 @@ export default {
       return false;
     },
     resetMessage() {
-      this.message = "";
+      this.body = "";
     }
   },
   data() {
@@ -60,6 +59,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

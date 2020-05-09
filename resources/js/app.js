@@ -23,7 +23,9 @@ window.Vue = require('vue');
 Vue.component('Giphy', require('./components/Giphy.vue').default);
 Vue.component('post-create-form', require('./components/PostCreateForm.vue').default);
 Vue.component('post-edit-form', require('./components/PostEditForm.vue').default);
-Vue.component('like', require('./components/Like.vue').default);
+Vue.component('comment-create-form', require('./components/CommentCreateForm.vue').default);
+Vue.component('reply-create-form', require('./components/ReplyCreateForm.vue').default);
+Vue.component('comment-edit-form', require('./components/CommentEditForm.vue').default);
 
 
 /**
@@ -35,7 +37,8 @@ Vue.component('like', require('./components/Like.vue').default);
 const app = new Vue({
     el: '#app',
     data: {
-        message: ''
+        message: '',
+        body: ''
     },
     methods: {
         imageClicked (imgSrc)
@@ -43,6 +46,7 @@ const app = new Vue({
             console.log('clicked');
             console.log(imgSrc);
             this.message=imgSrc;
+            this.body=imgSrc;
         }
     }
 });
