@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-Index
+TravelFeed
 @endsection
 @section('content')
 @if(session()->get('success'))
@@ -42,20 +42,6 @@ Index
               Read More
             </a>
         </li>
-        @auth
-        <li>
-            <a href="{{route('posts.edit', $post->id)}}" class="btn btn-primary">
-              Edit Post
-            </a>
-        </li>
-        <li>
-            <form action="{{route('posts.destroy', $post->id)}}" method="post">
-              @csrf
-                @method('DELETE')
-                <input type="submit" value="Delete Post" class="btn btn-warning">
-            </form>
-        </li>
-        @endauth
       </ul>
 </div>
     </div>

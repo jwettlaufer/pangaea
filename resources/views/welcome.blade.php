@@ -1,93 +1,87 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Pangaea</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='icon' href='favicon.ico' type='image/x-icon'>
+    <title>Pangaea</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Styles -->
+    <link href="{{ asset('css/welcome.css') }}" rel="stylesheet" type="text/css">
 
-            .full-height {
-                height: 100vh;
-            }
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
+    <script src="{{ asset('js/welcome.js') }}" type="text/javascript" defer></script>
+    <script src="{{asset('js/scrollmagic/ScrollMagic.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/jquery/jquery.min.js')}}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+</head>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<body>
+    <nav class="container">
+        <a href="#">
+            <img src="../public/img/logo.png" class="logo">
+        </a>
+        @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+            <a href="{{route('posts.index')}}">Explore</a>
+            @else
+            <a href="{{ route('login') }}">Login</a>
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}">Register</a>
             @endif
+            @endauth
+        </div>
+        @endif
+    </nav>
 
-            <div class="content">
-                <div class="title m-b-md">
-                Welcome to Pangaea!
+    <div class="content">
+        <div class="title m-b-md">
+            <h1>Welcome to Pangaea!</h1>
+        </div>
+        <section class="panel what-is">
+            <h2>What is Pangaea?</h2>
+            <p>Pangaea is a social network tailored to all things travel. A place to discuss where you have been, where you are now, and where you want to go next. Travelling back to when we were all one big nation, joined by land. Now we are all joining through Pangaea!</p>
+        </section>
+        <section class="panel why-join">
+            <h2>Why Join Pangaea?</h2>
+            <p>The place to share your passion with other travellers, while searching for your next destination. Post your best trips, worst trips, and any advice. Want first hand experience? Here is the place to hear exactly where to go, what to see, and what not to miss!</p>
+        </section>
+        <section class="panel reveal-images">
+            <div id="reveal-elements">
+                <div class="box1 digit blue">
+                <img src="../public/img/hawaii.jpg">
                 </div>
-
-                <div class="links">
-                    
+                <div class="box1 digit turqoise">
+                <img src="../public/img/japan.jpg">
+                </div>
+                <div class="box1 digit red">
+                <img src="../public/img/london.jpg">
+                </div>
+                <div class="box1 digit green">
+                <img src="../public/img/paris.jpg">
+                </div>
+                <div class="box1 digit orange">
+                <img src="../public/img/sydney.jpg">
                 </div>
             </div>
-        </div>
-    </body>
+        </section>
+        <section class="panel register-now">
+            <a href="{{ route('register') }}">Register Now!</a> and find your next adventure.
+        </section>
+        <footer>
+            <p>&copy; Copyright 2020 Pangaea. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+
 </html>

@@ -3,6 +3,8 @@
        <strong><a href="{{route('profile.show', $comment->user->id)}}">{{ $comment->user->name }}</a></strong>
        <p>{{ $comment->body }}</p>
        <a href="" id="reply"></a>
+       <div id="app">
+<!--
        <form method="post" action="{{ route('reply.add') }}">
            @csrf
            <div class="form-group">
@@ -14,7 +16,11 @@
            <div class="form-group">
                <input type="submit" class="btn btn-warning" value="Reply" />
            </div>
-       </form>
+       </form> 
+-->
+            <comment-create-form v-model="comment" comment-url="{{ route('reply.add') }}"></comment-create-form>
+            <Giphy v-on:image-clicked="imageClicked" />
+       </div>
        <ul>
          @auth
          <li>
@@ -26,7 +32,7 @@
              <form action="{{route('comment.destroy', $comment->id)}}" method="post">
                @csrf
                  @method('DELETE')
-                 <input type="submit" class="btn btn-warning" value="Delete Comment">
+                 <input type="submit" class="btn btn-danger" value="Delete Comment">
              </form>
          </li>
          @endauth
