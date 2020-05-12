@@ -10,7 +10,7 @@
         </div>
         <div class="field is-grouped">
           <div class="control">
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary btn-sm">Search</button>
           </div>
         </div>
       </form>

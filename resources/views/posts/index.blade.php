@@ -10,11 +10,11 @@ TravelFeed
 </div>
 @endif
 @include('partials.errors')
-<p>List of Posts:</p>
-<ul>
+<!--List of Posts-->
+<ul class="post-list" id="app">
   @foreach($posts as $post)
   <li>
-    <div class="card">
+    <div class="card post-index">
       <div class="card-header">
         <h2>
           <img src="/pangaea/public/img/logo.png" style="height: 50px; width: 50px; border-radius: 50%;" class="img-responsive">
@@ -32,18 +32,22 @@ TravelFeed
           @endif
         </p>
       </div>
-      <ul>
-        <li>
-          <a href="{{route('posts.show', $post->id)}}" class="btn btn-primary">
-            Read More
-          </a>
-        </li>
-        <li>
-          <div id="app" class="float-right">
-            <like post-id="{{ $post->id }}"></like>
-          </div>
-        <li>
-      </ul>
+      <div class="card-footer">
+        <ul>
+          <li>
+            <a href="{{route('posts.show', $post->id)}}" class="btn btn-link">
+              Read More
+            </a>
+          </li>
+          <li class="pull-right">
+            @if (Auth::check())
+            <like :post={{ $post->id }} :liked={{ $post->liked() ? 'true' : 'false' }}>
+            </like>
+            @endif
+            <span>{{ $post->likes()->count() }}</span>
+          <li>
+        </ul>
+      </div>
     </div>
   </li>
   @endforeach

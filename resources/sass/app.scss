@@ -1,12 +1,31 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 * {
     list-style: none;
+}
+
+.post-index {
+    margin-bottom: 20px;
+}
+
+.post-list {
+    padding-inline-end: 40px;
+}
+
+.post-show {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+
+.card-footer li {
+    display: inline-block;
+}
+
+.comment-buttons li {
+    display: inline-block;
 }

@@ -42,12 +42,11 @@ const app = new Vue({
         body: ''
     },
     methods: {
-        imageClicked (imgSrc)
-        {
+        imageClicked(imgSrc) {
             console.log('clicked');
             console.log(imgSrc);
-            this.message=imgSrc;
-            this.body=imgSrc;
+            this.message = imgSrc;
+            this.body = imgSrc;
         }
     }
 });

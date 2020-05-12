@@ -157,8 +157,8 @@ class PostController extends Controller
         return redirect('/posts');
     }
 
-    /**
-     * Favorite a particular post
+   /**
+     * like a particular post
      *
      * @param  Post $post
      * @return Response
@@ -171,12 +171,12 @@ class PostController extends Controller
     }
 
     /**
-     * Unfavorite a particular post
+     * Unlike a particular post
      *
      * @param  Post $post
      * @return Response
      */
-    public function unlikePost(Post $post)
+    public function unLikePost(Post $post)
     {
         Auth::user()->likes()->detach($post->id);
 

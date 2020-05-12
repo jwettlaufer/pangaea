@@ -12,12 +12,12 @@
     </div>
     <div v-else class="form-group">
       <label for="body">
-        <input type="text" name="comment_body" class="form-control" v-model="body" />
+        <textarea type="text" rows="1" cols="100" name="comment_body" class="form-control" v-model="body"></textarea>
         <input type="hidden" name="post_id" :value="postId" />
       </label>
     </div>
     <div class="form-group">
-      <input type="submit" class="btn btn-warning" value="Add Comment" />
+      <input type="submit" class="btn btn-warning btn-sm" value="Add Comment" />
     </div>
   </form>
 </template>

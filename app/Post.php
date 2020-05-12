@@ -24,11 +24,14 @@ class Post extends Model
   }
 
   public function liked()
-{
+  {
     return (bool) Like::where('user_id', Auth::id())
-                        ->where('post_id', $this->id)
-                        ->first();
-}
+      ->where('post_id', $this->id)
+      ->first();
+  }
 
-
+  public function likes()
+  {
+    return $this->hasMany(Like::class, 'post_id');
+  }
 }

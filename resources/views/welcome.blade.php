@@ -74,7 +74,9 @@
             </div>
         </section>
         <section class="panel register-now">
-            <a href="{{ route('register') }}">Register Now!</a> and find your next adventure.
+            <p>
+                <a href="{{ route('register') }}">Register Now!</a> and find your next adventure.
+            </p>
         </section>
     </main>
     <footer>

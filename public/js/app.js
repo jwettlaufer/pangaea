@@ -2126,7 +2126,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Like",
   props: ["post", "liked"],
@@ -2144,18 +2143,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    toggleLike: function toggleLike() {
-      if (this.liked) {
-        this.unlike();
-      } else {
-        this.like();
-      }
-    },
     like: function like(post) {
       var _this = this;
 
-      this.text = "Unlike";
-      axios.post("/like/" + post).then(function (response) {
+      axios.post("/pangaea/public/like/" + post).then(function (response) {
         return _this.isLiked = true;
       })["catch"](function (response) {
         return console.log(response.data);
@@ -2164,8 +2155,7 @@ __webpack_require__.r(__webpack_exports__);
     unLike: function unLike(post) {
       var _this2 = this;
 
-      this.text = "Like";
-      axios.post("/unlike/" + post).then(function (response) {
+      axios.post("/pangaea/public/unlike/" + post).then(function (response) {
         return _this2.isLiked = false;
       })["catch"](function (response) {
         return console.log(response.data);
@@ -40913,7 +40903,7 @@ var render = function() {
           ])
         : _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "body" } }, [
-              _c("input", {
+              _c("textarea", {
                 directives: [
                   {
                     name: "model",
@@ -40923,7 +40913,12 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "text", name: "comment_body" },
+                attrs: {
+                  type: "text",
+                  rows: "1",
+                  cols: "100",
+                  name: "comment_body"
+                },
                 domProps: { value: _vm.body },
                 on: {
                   input: function($event) {
@@ -40954,7 +40949,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("input", {
-        staticClass: "btn btn-warning",
+        staticClass: "btn btn-warning btn-sm",
         attrs: { type: "submit", value: "Add Comment" }
       })
     ])
@@ -41189,7 +41184,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "control" }, [
         _c(
           "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          { staticClass: "btn btn-primary btn-sm", attrs: { type: "submit" } },
           [_vm._v("Search")]
         )
       ])
@@ -41231,9 +41226,11 @@ var render = function() {
             }
           },
           [
-            _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
-              _vm._v("UnLike")
-            ])
+            _c("i", {
+              staticClass: "fa fa-heart fa-lg",
+              staticStyle: { color: "red" },
+              attrs: { "aria-hidden": "true" }
+            })
           ]
         )
       : _c(
@@ -41248,9 +41245,10 @@ var render = function() {
             }
           },
           [
-            _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
-              _vm._v("Like")
-            ])
+            _c("i", {
+              staticClass: "fa fa-heart-o fa-lg",
+              attrs: { "aria-hidden": "false" }
+            })
           ]
         )
   ])
@@ -41575,7 +41573,7 @@ var render = function() {
           ])
         : _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "body" } }, [
-              _c("input", {
+              _c("textarea", {
                 directives: [
                   {
                     name: "model",
@@ -41585,7 +41583,12 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "text", name: "comment_body" },
+                attrs: {
+                  type: "text",
+                  rows: "1",
+                  cols: "100",
+                  name: "comment_body"
+                },
                 domProps: { value: _vm.body },
                 on: {
                   input: function($event) {
@@ -41621,7 +41624,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("input", {
-        staticClass: "btn btn-warning",
+        staticClass: "btn btn-warning btn-sm",
         attrs: { type: "submit", value: "Add Reply" }
       })
     ])

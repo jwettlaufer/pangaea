@@ -10886,3 +10886,26 @@ a.text-dark:focus {
   list-style: none;
 }
 
+.post-index {
+  margin-bottom: 20px;
+}
+
+.post-list {
+  -webkit-padding-end: 40px;
+          padding-inline-end: 40px;
+}
+
+.post-show {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 20px;
+}
+
+.card-footer li {
+  display: inline-block;
+}
+
+.comment-buttons li {
+  display: inline-block;
+}
+
