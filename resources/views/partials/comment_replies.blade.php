@@ -1,5 +1,5 @@
 @foreach($comments as $comment)
-<div class="display-comment">
+<div class="display-comment" @if($comment->parent_id != null) style="margin-left:30px;" @endif>
     <strong><a href="{{route('profile.show', $comment->user->id)}}">{{ $comment->user->name }}</a></strong>
     <section>
         @if($comment->is_gif == TRUE )
@@ -29,21 +29,8 @@
         @endauth
     </ul>
     <a href="#" id="reply"></a>
-    <!--
-    <form method="post" action="{{ route('reply.add') }}">
-        @csrf
-        <div class="form-group">
-            <input type="text" name="comment_body" class="form-control" />
-            <div id="app">
-                <input type="hidden" name="post" value="{{ $post_id }}" />
-                <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-warning btn-sm" value="Reply" />
-            </div>
-    </form>
--->
-    <reply-create-form comment-url="{{route('reply.add')}}" comment-id="$comment->$id" post-id="{{ $post->id }}" v-model="body">
+
+    <reply-create-form reply-url="{{route('reply.add')}}" comment-id="{{$comment->id}}" post-id="{{ $post->id }}" v-model="bodyReply">
         @csrf
     </reply-create-form>
 <!--

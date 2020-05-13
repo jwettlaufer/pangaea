@@ -39,7 +39,8 @@ const app = new Vue({
     el: '#app',
     data: {
         message: '',
-        body: ''
+        body: '',
+        bodyReply: ''
     },
     methods: {
         imageClicked(imgSrc) {

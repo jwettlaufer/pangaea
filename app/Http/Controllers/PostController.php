@@ -182,4 +182,10 @@ class PostController extends Controller
 
         return back();
     }
+
+    public function likeCount(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+        return $post->likes()->count();
+    }
 }

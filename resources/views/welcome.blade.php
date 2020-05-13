@@ -60,16 +60,16 @@
         <section class="panel reveal-images">
             <div id="reveal-elements">
                 <div class="box1 digit">
-                    <img class="travel-img" src="../public/img/hawaii.jpg">
+                    <img class="travel-img" src="../public/img/hawaii.jpg" alt="Hawaii Pic">
                 </div>
                 <div class="box2 digit">
-                    <img class="travel-img" src="../public/img/japan.jpg">
+                    <img class="travel-img" src="../public/img/japan.jpg" alt="Japan Pic">
                 </div>
                 <div class="box3 digit">
-                    <img class="travel-img" src="../public/img/london.jpg">
+                    <img class="travel-img" src="../public/img/london.jpg" alt="London Pic">
                 </div>
                 <div class="box4 digit">
-                    <img class="travel-img" src="../public/img/paris.jpg">
+                    <img class="travel-img" src="../public/img/paris.jpg" alt="Paris Pic">
                 </div>
             </div>
         </section>

@@ -2126,16 +2126,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Like",
   props: ["post", "liked"],
   data: function data() {
     return {
-      isLiked: ""
+      isLiked: "",
+      likeCount: ""
     };
   },
   mounted: function mounted() {
     this.isLiked = this.isLike ? true : false;
+    this.getLikeCount(this.post);
   },
   computed: {
     isLike: function isLike() {
@@ -2147,7 +2150,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/pangaea/public/like/" + post).then(function (response) {
-        return _this.isLiked = true;
+        _this.isLiked = true;
+
+        _this.getLikeCount(post);
       })["catch"](function (response) {
         return console.log(response.data);
       });
@@ -2156,9 +2161,18 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.post("/pangaea/public/unlike/" + post).then(function (response) {
-        return _this2.isLiked = false;
+        _this2.isLiked = false;
+
+        _this2.getLikeCount(post);
       })["catch"](function (response) {
         return console.log(response.data);
+      });
+    },
+    getLikeCount: function getLikeCount(post) {
+      var _this3 = this;
+
+      axios.get("/pangaea/public/like/" + post).then(function (response) {
+        return _this3.likeCount = response.data;
       });
     }
   }
@@ -2347,7 +2361,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "reply-create-form",
   props: ["replyUrl", "postId", "commentId"],
   computed: {
-    body: {
+    bodyReply: {
       get: function get() {
         this.isStringAGIFUrl(this.$attrs.value);
         return this.$attrs.value;
@@ -2368,7 +2382,7 @@ __webpack_require__.r(__webpack_exports__);
       return false;
     },
     resetMessage: function resetMessage() {
-      this.body = "";
+      this.bodyReply = "";
     }
   },
   data: function data() {
@@ -41250,7 +41264,9 @@ var render = function() {
               attrs: { "aria-hidden": "false" }
             })
           ]
-        )
+        ),
+    _vm._v(" "),
+    _c("p", { staticClass: "pull-right" }, [_vm._v(_vm._s(_vm.likeCount))])
   ])
 }
 var staticRenderFns = []
@@ -41522,7 +41538,7 @@ var render = function() {
       _vm.isGif
         ? _c("div", { staticClass: "form-group" }, [
             _c("div", [
-              _c("img", { attrs: { src: _vm.body } }),
+              _c("img", { attrs: { src: _vm.bodyReply } }),
               _vm._v(" "),
               _c(
                 "button",
@@ -41549,18 +41565,18 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body"
+                    value: _vm.bodyReply,
+                    expression: "bodyReply"
                   }
                 ],
                 attrs: { type: "hidden", name: "comment_body" },
-                domProps: { value: _vm.body },
+                domProps: { value: _vm.bodyReply },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.body = $event.target.value
+                    _vm.bodyReply = $event.target.value
                   }
                 }
               }),
@@ -41572,14 +41588,14 @@ var render = function() {
             ])
           ])
         : _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "body" } }, [
+            _c("label", { attrs: { for: "bodyReply" } }, [
               _c("textarea", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body"
+                    value: _vm.bodyReply,
+                    expression: "bodyReply"
                   }
                 ],
                 staticClass: "form-control",
@@ -41589,13 +41605,13 @@ var render = function() {
                   cols: "100",
                   name: "comment_body"
                 },
-                domProps: { value: _vm.body },
+                domProps: { value: _vm.bodyReply },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.body = $event.target.value
+                    _vm.bodyReply = $event.target.value
                   }
                 }
               }),
@@ -53842,7 +53858,8 @@ var app = new Vue({
   el: '#app',
   data: {
     message: '',
-    body: ''
+    body: '',
+    bodyReply: ''
   },
   methods: {
     imageClicked: function imageClicked(imgSrc) {

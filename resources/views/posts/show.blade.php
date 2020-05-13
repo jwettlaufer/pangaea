@@ -36,10 +36,9 @@ Read More
         @endauth
         <li class="pull-right">
           @if (Auth::check())
-          <like :post={{ $post->id }} :liked={{ $post->liked() ? 'true' : 'false' }}>
+          <like :post="{{ $post->id }}" :liked="{{ $post->liked() ? 'true' : 'false' }}">
           </like>
           @endif
-          <span>{{ $post->likes()->count() }}</span>
         </li>
       </ul>
     </div>

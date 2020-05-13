@@ -38,3 +38,5 @@ Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
 
 Route::post('/like/{post}', 'PostController@likePost');
 Route::post('/unlike/{post}', 'PostController@unLikePost');
+
+Route::get('/like/{post}', 'PostController@likeCount');
