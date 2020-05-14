@@ -33,14 +33,12 @@
     <reply-create-form reply-url="{{route('reply.add')}}" comment-id="{{$comment->id}}" post-id="{{ $post->id }}" v-model="bodyReply">
         @csrf
     </reply-create-form>
-<!--
-    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGiphy">
+    <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapseGiphy">
         Giphy Search
     </button>
-        <div class="collapse" id="collapseGiphy">
+        <div class="collapse giphyButton" id="collapseGiphy">
             <Giphy v-on:image-clicked="imageClicked" />
         </div>
--->
     @include('partials.comment_replies', ['comments' => $comment->replies])
     <hr>
 </div>

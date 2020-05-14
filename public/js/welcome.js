@@ -10,11 +10,11 @@ $(document).ready(function() { // wait for document ready
         new ScrollMagic.Scene({
                 triggerElement: slides[i],
                 offset: 50, // start a little later
-                triggerHook: 1,
+                triggerHook: 0.9,
                 reverse: false
             })
-            .setClassToggle(".panel", "visible") // add class toggle
-            //	.addIndicators() // add indicators (requires plugin)
+            .setClassToggle(slides[i], "visible") // add class toggle
+            //.addIndicators() // add indicators (requires plugin)
             .addTo(controller);
     }
 

@@ -20,12 +20,15 @@ class ProfileController extends Controller
     public function index()
     {
         //
-        if ( $user = Auth::user() ) {
-          $user = Auth::user();
-          return view('profile.index', compact('user'));
-          }
-          // Redirect by default.
-          return redirect('/posts');
+        if ($user = Auth::user()) {
+            $user = Auth::user();
+            $profiles = Profile::query()
+                ->join('users', 'profiles.user_id', '=', 'users.id') 
+                ->get();
+            return view('profile.index', compact('profiles', 'user'));
+        }
+        // Redirect by default.
+        return redirect('/posts');
     }
 
     /**
@@ -33,22 +36,22 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      *
-    *public function create()
-    *{
-    *    //
-    *}
-    */
+     *public function create()
+     *{
+     *    //
+     *}
+     */
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      *
-    *public function store(Request $request)
-    *{
-    *    //
-    *}
-    */
+     *public function store(Request $request)
+     *{
+     *    //
+     *}
+     */
     /**
      * Display the specified resource.
      *
@@ -59,7 +62,8 @@ class ProfileController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        return view('profile.show', compact('user'));
+        $profile = Profile::findOrFail($id);
+        return view('profile.show', compact('profile','user'));
     }
 
     /**

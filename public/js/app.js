@@ -2211,7 +2211,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "post-create-form",
   props: ["submissionUrl"],
@@ -2258,7 +2257,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -41340,8 +41338,6 @@ var render = function() {
           ])
         : _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "message" } }, [
-              _c("strong", [_vm._v("Create a post:")]),
-              _vm._v(" "),
               _c("textarea", {
                 directives: [
                   {
@@ -41356,7 +41352,7 @@ var render = function() {
                   name: "message",
                   id: "message",
                   rows: "5",
-                  cols: "30"
+                  cols: "60"
                 },
                 domProps: { value: _vm.message },
                 on: {
@@ -41459,8 +41455,6 @@ var render = function() {
           ])
         : _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "message" } }, [
-              _c("strong", [_vm._v("Edit Post:")]),
-              _vm._v(" "),
               _c("textarea", {
                 directives: [
                   {
@@ -41475,7 +41469,7 @@ var render = function() {
                   name: "message",
                   id: "message",
                   rows: "5",
-                  cols: "30"
+                  cols: "60"
                 },
                 domProps: { value: _vm.message },
                 on: {

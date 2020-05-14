@@ -10887,7 +10887,7 @@ a.text-dark:focus {
 }
 
 .post-index {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .post-list {
@@ -10901,11 +10901,17 @@ a.text-dark:focus {
   margin-bottom: 20px;
 }
 
-.card-footer li {
+.card-footer li,
+.comment-buttons li,
+.giphyButton {
   display: inline-block;
 }
 
-.comment-buttons li {
-  display: inline-block;
+h1 {
+  padding: 10px;
+}
+
+.form-group {
+  margin-left: 20px;
 }
 

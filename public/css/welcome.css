@@ -80,6 +80,7 @@ section {
     padding: 80px;
     margin-bottom: 30px;
     border-radius: 5px;
+    box-shadow: 2px 2px gray;
 }
 
 section.panel.reveal-images {
@@ -94,6 +95,7 @@ section:last-child {
 
 section h2 {
     margin: 10px 0 25px 0;
+    text-transform: uppercase;
 }
 
 section p {
@@ -123,6 +125,7 @@ footer {
     text-align: center;
     vertical-align: middle;
     padding: 0 5px;
+    box-shadow: 2px 2px gray;
     opacity: 0;
     -webkit-transform: translateX(-80px);
     -moz-transform: translateX(-80px);
@@ -143,6 +146,11 @@ footer {
     -ms-transform: none;
     -o-transform: none;
     transform: none;
+}
+
+.digit p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
 }
 
 .digit:nth-child(2) {
@@ -166,11 +174,11 @@ footer {
 }
 
 .panel {
-    -webkit-transform: translateX(-40px);
-    -moz-transform: translateX(-40px);
-    -ms-transform: translateX(-40px);
-    -o-transform: translateX(-40px);
-    transform: translateX(-40px);
+    -webkit-transform: translateX(-140px);
+    -moz-transform: translateX(-140px);
+    -ms-transform: translateX(-140px);
+    -o-transform: translateX(-140px);
+    transform: translateX(-140px);
     -webkit-transition: all 0.6s ease-out;
     -moz-transition: all 0.6s ease-out;
     -ms-transition: all 0.6s ease-out;

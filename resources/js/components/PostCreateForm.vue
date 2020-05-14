@@ -11,8 +11,7 @@
     </div>
     <div v-else class="form-group">
       <label for="message">
-        <strong>Create a post:</strong>
-        <textarea class="form-control" name="message" id="message" rows="5" cols="30" v-model="message"></textarea>
+        <textarea class="form-control" name="message" id="message" rows="5" cols="60" v-model="message"></textarea>
       </label>
     </div>
     <div class="form-group">

@@ -51,13 +51,14 @@ Read More
       @include('partials.comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
     </div>
     <div class="card-footer">
+      <h4>Add Comment</h4>
       <comment-create-form comment-url="{{route('comment.add')}}" post-id="{{ $post->id }}" v-model="body">
         @csrf
       </comment-create-form>
-      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGiphy">
+      <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapseGiphy">
         Giphy Search
       </button>
-      <div class="collapse" id="collapseGiphy">
+      <div class="collapse giphyButton" id="collapseGiphy">
         <Giphy v-on:image-clicked="imageClicked" />
       </div>
     </div>

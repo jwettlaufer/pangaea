@@ -61,21 +61,25 @@
             <div id="reveal-elements">
                 <div class="box1 digit">
                     <img class="travel-img" src="../public/img/hawaii.jpg" alt="Hawaii Pic">
+                    <p>"Memories</p>
                 </div>
                 <div class="box2 digit">
                     <img class="travel-img" src="../public/img/japan.jpg" alt="Japan Pic">
+                    <p>last</p>
                 </div>
                 <div class="box3 digit">
                     <img class="travel-img" src="../public/img/london.jpg" alt="London Pic">
+                    <p>a</p>
                 </div>
                 <div class="box4 digit">
                     <img class="travel-img" src="../public/img/paris.jpg" alt="Paris Pic">
+                    <p>lifetime..."</p>
                 </div>
             </div>
         </section>
         <section class="panel register-now">
             <p>
-                <a href="{{ route('register') }}">Register Now!</a> and find your next adventure.
+                <a href="{{ route('register') }}"><strong>REGISTER NOW!</strong></a> and find your next adventure.
             </p>
         </section>
     </main>

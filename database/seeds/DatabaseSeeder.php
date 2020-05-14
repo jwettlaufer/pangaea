@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
         (new PostsTableSeeder)->run();
 
         (new UsersTableSeeder)->run();
+
+        (new ProfilesTableSeeder)->run();
     }
 }

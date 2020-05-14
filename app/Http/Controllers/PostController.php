@@ -21,6 +21,7 @@ class PostController extends Controller
     public function index()
     {
         //
+
         $posts = Post::query()
             ->join('users', 'posts.user_id', '=', 'users.id')
             ->select(
@@ -61,7 +62,7 @@ class PostController extends Controller
         //
         if ($user = Auth::user()) {
             $validatedData = $request->validate(array(
-                'message' => 'required|max:240'
+                'message' => 'required|max:255'
             ));
             $post = new Post;
             $post->user_id = $user->id;
@@ -121,7 +122,7 @@ class PostController extends Controller
         //
         if ($user = Auth::user()) {
             $validatedData = $request->validate(array(
-                'message' => 'required|max:240'
+                'message' => 'required|max:255'
             ));
 
             $post = Post::findOrFail($id);
