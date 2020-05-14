@@ -28,7 +28,8 @@ class PostController extends Controller
                 'posts.id',
                 'users.id as user_id',
                 'users.name',
-                'posts.message'
+                'posts.message',
+                'posts.is_gif'
             )
             ->orderBy('posts.id', 'desc')
             ->SimplePaginate(6);

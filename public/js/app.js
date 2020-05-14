@@ -53861,6 +53861,7 @@ var app = new Vue({
       console.log(imgSrc);
       this.message = imgSrc;
       this.body = imgSrc;
+      this.bodyReply = imgSrc;
     }
   }
 });

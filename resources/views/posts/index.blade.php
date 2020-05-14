@@ -25,12 +25,15 @@ TravelFeed
       </div>
       <div class="card-body">
         <p class="card-text">
-          @if($post->is_gif == TRUE)
-          <img src="{{$post->message}}">
-          @else
-          {{$post->message}}
-          @endif
+        @if($post->is_gif == TRUE )
+        <div>
+            <img src="{{ $post->message }}">
+        </div>
+        @else
+        <p>
+            {{ $post->message }}
         </p>
+        @endif
       </div>
       <div class="card-footer">
         <ul>
